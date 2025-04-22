@@ -11,3 +11,12 @@ wss.on("connection", function (socket) {
 webSocketServer.on("message", (e) => {
   console.log(e);
 });
+
+webSocketServer.on("message", (e) => {
+  console.log(e.toString());
+  console.log(e.toString() === "ping");
+
+  if (e.toString() === "ping") {
+    webSocketServer.send("pong");
+  }
+});
